@@ -1,0 +1,15 @@
+Introduction to Retrieval-Augmented Generation
+
+Retrieval-Augmented Generation (RAG) combines the strengths of large language models with external knowledge retrieval. Instead of relying solely on parametric knowledge baked into model weights during training, RAG systems fetch relevant documents at inference time and use them as grounding context.
+
+How RAG Works
+
+A RAG pipeline has three main stages. First, documents are ingested, chunked into passages, and embedded into a vector space. Second, at query time, the user's question is embedded and the most semantically similar passages are retrieved. Third, the retrieved passages are injected into the LLM prompt as context, and the model generates a grounded answer.
+
+Why Semantic Chunking Matters
+
+Fixed-size chunking splits documents every N tokens regardless of content boundaries, often cutting sentences or paragraphs mid-thought. Semantic chunking instead splits on paragraph boundaries first, then sentences, preserving the natural structure of the text. This improves retrieval precision because each chunk represents a coherent idea rather than an arbitrary slice.
+
+Evaluation with RAGAS
+
+RAGAS (Retrieval Augmented Generation Assessment) provides metrics for evaluating RAG pipelines without requiring human annotation for every query. Key metrics include faithfulness (does the answer stay grounded in the retrieved context?), answer relevancy (does the answer address the question?), context precision (are the retrieved chunks relevant?), and context recall (were all necessary facts retrieved?).
