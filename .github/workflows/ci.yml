@@ -28,6 +28,7 @@ jobs:
       - name: Run tests
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY || 'sk-test-dummy' }}
+          PYTHONPATH: .
         run: pytest tests/ -v --tb=short --cov=src --cov-report=term-missing
 
       - name: Upload coverage
